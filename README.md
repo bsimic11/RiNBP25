@@ -1,26 +1,45 @@
-# RiNBP25 - opis projekta
-**Učinkovitost Rukovanja JSON Podacima: DuckDB naspram Couchbasea**
+Usporedba baza podataka: DuckDB vs MySQL na skupu podataka "Million News Headlines"
+Opis projekta
+Ovaj projekt ima za cilj usporediti performanse i praktičnost korištenja DuckDB i MySQL baza podataka pri analizi stvarnog podatkovnog skupa — Million News Headlines, koji sadrži više od milijun naslova vijesti australske novinske agencije ABC od 2003. do 2021. godine.
 
-Uvod
+Ciljevi
+Usporediti vrijeme izvođenja upita između DuckDB-a i MySQL-a
 
-U ovom projektu analizira se učinkovitost rukovanja JSON podacima pomoću DuckDB-a i Couchbasea. Cilj je usporediti DuckDB-ovo JSON parsiranje s nativnim pohranom dokumenata u Couchbaseu u kontekstu analize ugniježdenih podataka, kao što su objave na društvenim mrežama ili katalozi proizvoda. Evaluacija se temelji na izvedbi, brzini pretrage i fleksibilnosti manipulacije podacima u oba sustava. Uz to, istražit će se prednosti i nedostaci svakog rješenja kako bi se identificirao optimalan pristup za različite scenarije uporabe.
+Usporediti jednostavnost implementacije analitičkih upita
 
-Metodologija
+Evaluirati pogodnost za obradu tekstualnih i vremenskih podataka
 
-Projekt će obuhvatiti sljedeće korake:
-Priprema skupa podataka Generiranje ili preuzimanje JSON podataka sa složenom ugniježdenom strukturom, simulirajući stvarne primjene, poput društvenih mreža ili e-trgovine.
-Učitavanje podataka Umetanje JSON podataka u DuckDB i Couchbase, analizirajući zahtjeve resursa, veličinu pohranjenih podataka i vrijeme inicijalne obrade.
-Izvršavanje upita Pisanje i pokretanje raznih SQL upita za izdvajanje i agregaciju podataka, uključujući jednostavne dohvaćanja, filtriranje, grupiranje i složenije analitičke operacije.
-Mjerenje performansi Analiza vremena izvršavanja upita, korištenja memorije, efikasnosti pretrage te sposobnosti skaliranja kod različitih volumena podataka.
-Indeksiranje i optimizacija Evaluacija mogućnosti optimizacije performansi korištenjem indeksa, particioniranja podataka i drugih tehnika poboljšanja brzine rada.
+Prezentirati rezultate kroz mjerne tablice i zaključke
 
- Očekivani Rezultati
+Korišteni podaci
+Dataset: Million News Headlines (Kaggle)
+Format: CSV
+Polja:
 
-DuckDB Trebao bi pokazati visoku učinkovitost u analitičkim upitima zbog kolumnarne arhitekture, što omogućava bržu obradu velikih skupova podataka. Međutim, njegova podrška za JSON strukture mogla bi biti ograničena u odnosu na sustave dizajnirane primarno za rad s dokumentima.
-Couchbase Kao NoSQL rješenje, Couchbase bi trebao omogućiti brže dohvaćanje podataka, osobito u scenarijima gdje su upiti nepredvidivi ili gdje postoji potreba za radom u stvarnom vremenu. Njegov indeksni sustav mogao bi osigurati prednost u performansama pri pretrazi specifičnih elemenata unutar JSON dokumenata.
-Skalabilnost i primjena Analizom će se utvrditi koji sustav bolje odgovara različitim analitičkim i operativnim scenarijima, uključujući obradu velikih podataka, real-time analitiku i ad-hoc upite.
+publish_date – datum objave naslova (YYYYMMDD)
+
+headline_text – tekstualni naslov vijesti
+
+Tehnologije
+DuckDB (verzija X.X)
+
+MySQL (verzija X.X)
+
+Python (pandas, duckdb, pymysql, time)
+
+Jupyter Notebook
+
+Testirani upiti
+Broj vijesti po godini
+
+Filtriranje naslova koji sadrže određenu ključnu riječ (npr. "war")
+
+Broj naslova po danu/tjednu
+
+Učestalost pojavljivanja pojedinih riječi (jednostavna analiza)
+
+Mjerenje performansi
+Vrijeme izvođenja svakog upita mjerilo se u sekundama pomoću Python modula time. Uspoređena su vremena izvođenja istih upita nad identičnim podacima u obje baze.
 
 Zaključak
-
-Rezultati istraživanja pokazat će prednosti i nedostatke svakog pristupa te preporučiti optimalan izbor alata ovisno o specifičnim zahtjevima analize podataka. DuckDB bi mogao biti idealan za analitičke upite na velikim, strukturiranim podacima, dok bi Couchbase mogao biti bolji za fleksibilnije, skalabilne i dinamične aplikacije. Ove spoznaje mogu pomoći istraživačima i tvrtkama u donošenju informiranih odluka o odabiru baze podataka za rad s JSON podacima.
-
+DuckDB se pokazao kao izuzetno praktičan za analitičku obradu većih skupova podataka, s izrazito jednostavnom integracijom u Python okruženje. MySQL je stabilan i moćan alat, pogotovo za dugoročno spremanje i upravljanje podacima, ali zahtijeva više konfiguracije i nije optimiziran za analizu u memoriji.
