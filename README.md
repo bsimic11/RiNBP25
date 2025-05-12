@@ -13,6 +13,7 @@ Prezentirati rezultate kroz mjerne tablice i zaključke
 
 Korišteni podaci
 Dataset: Million News Headlines (Kaggle)
+https://www.kaggle.com/datasets/therohk/million-headlines/data
 Format: CSV
 Polja:
 
@@ -21,9 +22,9 @@ publish_date – datum objave naslova (YYYYMMDD)
 headline_text – tekstualni naslov vijesti
 
 Tehnologije
-DuckDB (verzija X.X)
+DuckDB 
 
-MySQL (verzija X.X)
+MySQL 
 
 Python (pandas, duckdb, pymysql, time)
 
